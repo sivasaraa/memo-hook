@@ -12,11 +12,15 @@ function Counter(){
         setCounterTwo((count) => count + 1)
     }
 
+    const isEven = () => {
+        return counterOne % 2 == 0
+    }
 
     return (
         <div>
             <div>
                 <button onClick={incrementOne}>CounterOne - {counterOne}</button>
+                <span>{isEven() ? 'Even' : 'Odd'}</span>
             </div>
             <div>
                 <button onClick={incrementTwo}>CounterTwo - {counterTwo}</button>
