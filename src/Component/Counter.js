@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 function Counter(){
     const [counterOne, setCounterOne] = useState(0)
@@ -12,15 +12,17 @@ function Counter(){
         setCounterTwo((count) => count + 1)
     }
 
-    const isEven = () => {
-        return counterOne % 2 == 0
-    }
+    const isEven = useMemo(() => {
+        let i = 0;
+        while(i < 20000000) i++
+        return counterOne % 2 === 0
+    },[counterOne])
 
     return (
         <div>
             <div>
                 <button onClick={incrementOne}>CounterOne - {counterOne}</button>
-                <span>{isEven() ? 'Even' : 'Odd'}</span>
+                <span>{isEven ? 'Even' : 'Odd'}</span>
             </div>
             <div>
                 <button onClick={incrementTwo}>CounterTwo - {counterTwo}</button>
